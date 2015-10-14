@@ -17,8 +17,8 @@ def index():
 def getData():
 	
 	client = pyorient.OrientDB("localhost", 2424)
-	session_id = client.connect("root", "admin")
-	db_name = "soufun"
+	session_id = client.connect("root", "R0n+H3rm10n3")
+	db_name = "soufun2"
 	db_username = "admin"
 	db_password = "admin"
 
@@ -36,7 +36,7 @@ def getData():
 	lng2 = 114.076644
 
 	query = 'SELECT FROM Listing WHERE latitude BETWEEN {} AND {} AND longitude BETWEEN {} AND {}'
-
+        
 	records = client.command(query.format(lat1, lat2, lng1, lng2))
 
 	numListings = len(records)
@@ -55,7 +55,8 @@ def getData():
 
 		output["features"].append(feature)
 
+
 	return json.dumps(output)
 
 if __name__ == "__main__":
-    app.run(host='0.0.0.0',port=5000,debug=True,threaded=True)
+    app.run(host='0.0.0.0',port=5001,debug=True,threaded=True)
